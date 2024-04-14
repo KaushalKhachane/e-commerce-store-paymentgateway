@@ -226,6 +226,43 @@ ALTER TABLE `users`
 --
 ALTER TABLE `wishlist`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+
+-- Inserting data into the admins table
+INSERT INTO `admins` (`id`, `name`, `password`) VALUES
+(1, 'admin', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2');
+
+-- Inserting data into the cart table
+-- Assuming user_id, pid, and price correspond to actual users, products, and their prices respectively
+INSERT INTO `cart` (`id`, `user_id`, `pid`, `name`, `price`, `quantity`, `image`) VALUES
+(1, 1, 1, 'Product1', 19.99, 2, 'https://example.com/image1.jpg'),
+(2, 2, 2, 'Product2', 29.99, 1, 'https://example.com/image2.jpg');
+
+-- Inserting data into the messages table
+INSERT INTO `messages` (`id`, `user_id`, `name`, `email`, `number`, `message`) VALUES
+(1, 1, 'John Doe', 'john@example.com', '1234567890', 'This is a sample message.');
+
+-- Inserting data into the orders table
+-- Assuming total_products is a JSON representation of products and their quantities
+INSERT INTO `orders` (`id`, `user_id`, `name`, `number`, `email`, `method`, `address`, `total_products`, `total_price`, `placed_on`, `payment_status`) VALUES
+(1, 1, 'John Doe', 'ORD123456', 'john@example.com', 'Credit Card', '123 Main St, City, Country', '{"Product1": 2, "Product2": 1}', 69.97, '2024-04-14', 'pending');
+
+-- Inserting data into the products table
+-- Use actual details for each product
+INSERT INTO `products` (`id`, `name`, `details`, `price`, `image_01`, `image_02`, `image_03`) VALUES
+(1, 'Product1', 'Details about Product1', 19.99, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.imagineonline.store%2Fproducts%2Fiphone-15-mtp13hn-a&psig=AOvVaw14OZmLhWiqxcgiizKqIuWm&ust=1713169143371000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJDUx_eiwYUDFQAAAAAdAAAAABAE', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.imagineonline.store%2Fproducts%2Fiphone-15-mtp13hn-a&psig=AOvVaw14OZmLhWiqxcgiizKqIuWm&ust=1713169143371000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJDUx_eiwYUDFQAAAAAdAAAAABAE', 'https://www.apple.com/v/iphone/home/bu/images/meta/iphone__ky2k6x5u6vue_og.png');
+
+-- Inserting data into the users table
+INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
+(1, 'John Doe', 'john@example.com', 'password123'),
+(2, 'Jane Smith', 'jane@example.com', 'securepassword');
+
+-- Inserting data into the wishlist table
+-- Assuming user_id, pid, and price correspond to actual users, products, and their prices respectively
+INSERT INTO `wishlist` (`id`, `user_id`, `pid`, `name`, `price`, `image`) VALUES
+(1, 1, 2, 'Product2', 29.99, 'https://example.com/product2_image.jpg'),
+(2, 2, 1, 'Product1', 19.99, 'https://example.com/product1_image.jpg');
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

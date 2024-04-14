@@ -11,6 +11,9 @@ if(isset($_SESSION['user_id'])){
    header('location:user_login.php');
 };
 
+$id = ''; // Declare $id variable outside the if block
+
+
 if(isset($_POST['order'])){
 
    $name = $_POST['name'];
@@ -28,15 +31,84 @@ if(isset($_POST['order'])){
 
    $check_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
    $check_cart->execute([$user_id]);
-
    if($check_cart->rowCount() > 0){
 
       $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price) VALUES(?,?,?,?,?,?,?,?)");
       $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
+      $url = "https://api.razorpay.com/v1/orders";
+$data = array(
+    "amount" => 100,
+    "currency" => "INR"
+    // "receipt" => "qwsaq1"
+);
+$data_string = json_encode($data);
 
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($data_string),
+    'Authorization: Basic ' . base64_encode("rzp_test_VM10e3pIWaTAOp:YEt2ltmIjjK2gzDqc0fkcQKm")
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+$json_response = json_decode($response, true);
+
+// Extracting the id
+$id = $json_response['id'];
+?>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_VM10e3pIWaTAOp", // Enter the Key ID generated from the Dashboard
+    "amount": "100", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Acme Corp", //your business name
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "<?php echo $id; ?>", // Pass the order ID obtained from the server
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+    },
+    "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+        "name": "Kaushal Khachane", //your customer's name
+        "email": "khachaneks22@gmail.com", 
+        "contact": "9359168397"  //Provide the customer's phone number for better conversion rates 
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+document.getElementById('order').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+<?php
       $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
       $delete_cart->execute([$user_id]);
-
+      echo '<script>';
+    echo 'rzp1.open();'; // Call the open() method on rzp1
+    echo '</script>';
       $message[] = 'order placed successfully!';
    }else{
       $message[] = 'your cart is empty';
@@ -67,7 +139,7 @@ if(isset($_POST['order'])){
 
 <section class="checkout-orders">
 
-   <form action="" method="POST">
+<form action="" method="POST">
 
    <h3>Your Orders</h3>
 
@@ -92,14 +164,14 @@ if(isset($_POST['order'])){
       ?>
          <input type="hidden" name="total_products" value="<?= $total_products; ?>">
          <input type="hidden" name="total_price" value="<?= $grand_total; ?>" value="">
-         <div class="grand-total">Grand Total : <span>Nrs.<?= $grand_total; ?>/-</span></div>
+         <div class="grand-total">Grand Total : <span>Rs.<?= $grand_total; ?>/-</span></div>
       </div>
 
       <h3>place your orders</h3>
 
       <div class="flex">
          <div class="inputBox">
-            <span>Tapaiko subh nam :</span>
+            <span>Name :</span>
             <input type="text" name="name" placeholder="enter your name" class="box" maxlength="20" required>
          </div>
          <div class="inputBox">
@@ -111,12 +183,12 @@ if(isset($_POST['order'])){
             <input type="email" name="email" placeholder="enter your email" class="box" maxlength="50" required>
          </div>
          <div class="inputBox">
-            <span>kasari halnuhunx paisa? :</span>
+            <span>Mode of Payment? :</span>
             <select name="method" class="box" required>
                <option value="cash on delivery">Cash On Delivery</option>
                <option value="credit card">Credit Card</option>
-               <option value="paytm">eSewa</option>
-               <option value="paypal">Khalti</option>
+               <option value="paytm">Paytm</option>
+               <option value="paypal">Paypal</option>
             </select>
          </div>
          <div class="inputBox">
@@ -129,15 +201,15 @@ if(isset($_POST['order'])){
          </div>
          <div class="inputBox">
             <span>City :</span>
-            <input type="text" name="city" placeholder="Kathmandu" class="box" maxlength="50" required>
+            <input type="text" name="city" placeholder="Pune" class="box" maxlength="50" required>
          </div>
          <div class="inputBox">
-            <span>Province:</span>
-            <input type="text" name="state" placeholder="Bagmati" class="box" maxlength="50" required>
+            <span>State:</span>
+            <input type="text" name="state" placeholder="Maharashtra" class="box" maxlength="50" required>
          </div>
          <div class="inputBox">
             <span>Country :</span>
-            <input type="text" name="country" placeholder="Nepal" class="box" maxlength="50" required>
+            <input type="text" name="country" placeholder="India" class="box" maxlength="50" required>
          </div>
          <div class="inputBox">
             <span>ZIP CODE :</span>
@@ -150,17 +222,6 @@ if(isset($_POST['order'])){
    </form>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <?php include 'components/footer.php'; ?>

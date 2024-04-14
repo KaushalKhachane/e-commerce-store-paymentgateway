@@ -43,9 +43,9 @@ if(isset($_SESSION['user_id'])){
 
       <div class="content">
          <h3>Developer's Message:</h3>
-         <p>Hey There ! I'm Harsh Chaudhary. A Student of BE in Software Engineering Department from NCIT College [Batch : 2023] . I love designing websites and exploring new things. Learning new things is my hobby.</p>
+         <p>Hey There ! I'm Ashutosh Mazodkar. A Student of B.tech in Computer Engineering Department from VIIT College [Batch : 2025] . I love designing websites and exploring new things. Learning new things is my hobby.</p>
 
-         <p>I would like to thank <a href="https://www.facebook.com/er.ashokbasnet" target="_blank">Er. Ashok Basnet</a> Sir for guiding me through the session and making me able to develop projects like this. </p>
+         <p>I would like to thank Mr. Kedar Deo Sir for guiding me through the session and making me able to develop projects like this. </p>
          <a href="contact.php" class="btn">Contact Us</a>
       </div>
 
@@ -61,7 +61,7 @@ if(isset($_SESSION['user_id'])){
 
    <div class="swiper-wrapper">
 
-      <div class="swiper-slide slide">
+      <!-- <div class="swiper-slide slide">
          <img src="images/pic-5.jpg" alt="">
          <p>Been using their services for quite a bit and have never had an issue with the quality of their products. Online e-products working great as well. Only issue I have is they usually deliver when I'm a little caught up, though I've set a preferred delivery time. Everything else has been good.</p>
          <div class="stars">
@@ -72,11 +72,11 @@ if(isset($_SESSION['user_id'])){
             <i class="fas fa-star-half-alt"></i>
          </div>
          <h3> <a href="https://www.facebook.com/profile.php?id=100083292714419" target="_blank">Denisha Adhikari</a></h3>
-      </div>
+      </div> -->
 
       <div class="swiper-slide slide">
          <img src="images/pic-1.jpg" alt="">
-         <p>It is the first online services in Nepal which we can trust completely.I always unbox making a video and instantly complain if there's anything wrong. Sometimes even don't need to return the item and they process the refund. KinBech do heavy fine to sellers who send wrong products thats why its platform getting better day by day.</p>
+         <p>Fantastic experience shopping on [Your Website Name]! The layout is user-friendly, and the product descriptions were detailed and accurate. Plus, the delivery was prompt. Highly recommend!</p>
          <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -89,7 +89,7 @@ if(isset($_SESSION['user_id'])){
 
       <div class="swiper-slide slide">
          <img src="images/pic-3.jpg" alt="">
-         <p>KinBech is great if you choose good sellers . A variety of required item available . Customers can return and refund full amount within 7 days easily . KinBech is boosting eCommerce business in Kathmandu.It provides great opportunity to sale items online with ease.</p>
+         <p>Impressed by the variety of products and the smooth navigation of the website. Found exactly what I needed quickly and the checkout process was hassle-free. Definitely my go-to for online shopping now!</p>
          <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -102,7 +102,7 @@ if(isset($_SESSION['user_id'])){
 
       <div class="swiper-slide slide">
          <img src="images/pic-7.jpg" alt="">
-         <p>Using KinBech for online shopping from almost 3 years. Outstanding experience with them. Game vouchers and pick up point as delivery with 0 shipping charges are super saving services.</p>
+         <p>I'm blown away by the quality of service and products on [Your Website Name]. The customer support team was responsive and helpful, and the items I ordered arrived even faster than expected. Will be recommending to all my friends!</p>
          <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -115,7 +115,7 @@ if(isset($_SESSION['user_id'])){
 
       <div class="swiper-slide slide">
          <img src="images/pic-2.jpg" alt="">
-         <p>I have been using their services for the last 2 years and I have found them extremely reliable.Their return policy is what gives you an extra layer of reliance and peace of mind. In case the product doesn't meet your expectations or if there is any fault in it. then you can return the product within seven days from the date of delivery.</p>
+         <p>Skeptical at first, but [Your Website Name] exceeded my expectations. The website is well-designed, making it easy to find what I needed. And the prices are competitive. Will definitely be a repeat customer!</p>
          <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -128,7 +128,7 @@ if(isset($_SESSION['user_id'])){
 
       <div class="swiper-slide slide">
          <img src="images/pic-6.jpg" alt="">
-         <p>KinBech is cool! I have ordered hundreds of products from it and never got any scam. It delivers products in time with out delay. Packaging of products are strong and delivery rates are too low. Just amazing Website will keep shopping from KinBech.</p>
+         <p>Five stars for [Your Website Name]! I've had nothing but positive experiences with every purchase. The product selection is excellent, the checkout process is straightforward, and the shipping is prompt. Couldn't ask for more from an online store!</p>
          <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
