@@ -13,9 +13,9 @@
       <div class="box">
          <h3>Extra links</h3>
          <a href="user_login.php"> <i class="fas fa-angle-right"></i> Login</a>
-         <a href="user_register.php"> <i class="fas fa-angle-right"></i> Register</a>
-         <a href="cart.php"> <i class="fas fa-angle-right"></i> Cart</a>
-         <a href="orders.php"> <i class="fas fa-angle-right"></i> Orders</a>
+         <a href="Terms.php"> <i class="fas fa-angle-right"></i> Terms & Conditions</a>
+         <a href="PrivacyP.php"> <i class="fas fa-angle-right"></i> Privacy and Policy</a>
+         <a href="cancellation.php"> <i class="fas fa-angle-right"></i> Refund and Cancellation</a>
       </div>
 
       <div class="box">

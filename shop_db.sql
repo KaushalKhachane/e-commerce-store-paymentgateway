@@ -238,7 +238,7 @@ INSERT INTO `cart` (`id`, `user_id`, `pid`, `name`, `price`, `quantity`, `image`
 (2, 2, 2, 'Product2', 29.99, 1, 'https://example.com/image2.jpg');
 
 -- Inserting data into the messages table
-INSERT INTO `messages` (`id`, `user_id`, `name`, `email`, `number`, `message`) VALUES
+INSERT INTO `messages` (`id`, `user_id`, `name`,   `email`, `number`, `message`) VALUES
 (1, 1, 'John Doe', 'john@example.com', '1234567890', 'This is a sample message.');
 
 -- Inserting data into the orders table
