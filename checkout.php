@@ -50,7 +50,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json',
     'Content-Length: ' . strlen($data_string),
-    'Authorization: Basic ' . base64_encode("rzp_test_VM10e3pIWaTAOp:YEt2ltmIjjK2gzDqc0fkcQKm")
+    'Authorization: Basic ' . base64_encode("rzp_live_5y8iaBQ0QgAHbp:2FScFF7upRbqkx6rsxB5FaMN")
 ));
 
 $response = curl_exec($ch);
@@ -64,7 +64,7 @@ $id = $json_response['id'];
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
 var options = {
-    "key": "rzp_test_VM10e3pIWaTAOp", // Enter the Key ID generated from the Dashboard
+    "key": "rzp_live_5y8iaBQ0QgAHbp", // Enter the Key ID generated from the Dashboard
     "amount": "100", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
     "name": "Acme Corp", //your business name
@@ -100,10 +100,14 @@ rzp1.on('payment.failed', function (response){
 });
 document.getElementById('order').onclick = function(e){
     rzp1.open();
+
     e.preventDefault();
 }
 </script>
 <?php
+      $q = $conn->prepare("UPDATE `orders` SET payment_status = ? WHERE email = ?");
+      $q->execute(["completed", $email]);
+      
       $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
       $delete_cart->execute([$user_id]);
       echo '<script>';
@@ -217,7 +221,7 @@ document.getElementById('order').onclick = function(e){
          </div>
       </div>
 
-      <input type="submit" name="order" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>" value="place order">
+      <input type="submit" name="order" class="btn <?= ($grand_total >= 1)?'':'disabled'; ?>" value="place order">
 
    </form>
 

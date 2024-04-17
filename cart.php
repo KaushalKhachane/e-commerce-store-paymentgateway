@@ -92,7 +92,7 @@ if(isset($_POST['update_qty'])){
       <p>Grand Total : <span>Rs.<?= $grand_total; ?>/-</span></p>
       <a href="shop.php" class="option-btn">Continue Shopping.</a>
       <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">Delete All Items ?</a>
-      <a href="checkout.php" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>">Proceed to Checkout.</a>
+      <a href="checkout.php" class="btn <?= ($grand_total >= 1)?'':'disabled'; ?>">Proceed to Checkout.</a>
    </div>
 
 </section>

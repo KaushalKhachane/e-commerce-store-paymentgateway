@@ -22,7 +22,7 @@
          <h3>Contact Us.</h3>
          <a href="tel:9800000000"><i class="fas fa-phone"></i> +977 980 000 0000</a>
          <a href="tel:9900000000"><i class="fas fa-phone"></i> +977 974 000 0000</a>
-         <a href="mailto:@gmail.com"><i class="fas fa-envelope"></i> apnamaildalde@gmail.com</a>
+         <a href="mailto:@gmail.com"><i class="fas fa-envelope"></i> khachaneks22@gmail.com</a>
          <a href="https://www.google.com/myplace"><i class="fas fa-map-marker-alt"></i> Maharashtra,India </a>
       </div>
 
