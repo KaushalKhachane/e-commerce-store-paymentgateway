@@ -15,7 +15,7 @@
 
    <section class="flex">
 
-      <a href="home.php" class="logo">Fintech<span>.Com</span></a>
+      <a href="home.php" class="logo">Fidrox <span>Exports</span></a>
 
       <nav class="navbar">
          <a href="home.php">Home</a>

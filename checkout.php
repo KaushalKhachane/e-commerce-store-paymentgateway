@@ -67,7 +67,7 @@ var options = {
     "key": "rzp_live_5y8iaBQ0QgAHbp", // Enter the Key ID generated from the Dashboard
     "amount": "100", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
-    "name": "Acme Corp", //your business name
+    "name": "Chhajed Exports", //your business name
     "description": "Test Transaction",
     "image": "https://example.com/your_logo",
     "order_id": "<?php echo $id; ?>", // Pass the order ID obtained from the server
